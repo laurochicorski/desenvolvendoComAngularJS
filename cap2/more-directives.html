@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="notesApp">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        .done{
+            background-color: green;
+        }
+        .pending{
+            background-color: red;
+        }
+    </style>
+</head>
+<body ng-controller="MainCtrl as ctrl">
+    <div ng-repeat="nota in ctrl.notas" ng-class="ctrl.getNoteClass(nota.done)">
+        <span class="titulo">{{nota.titulo}}</span>
+        <span class="sessao" ng-show="nota.sessao" ng-bind="nota.sessao"></span>
+    </div>
+    <script src="angular/angular.min.js"></script>
+    <script type="text/javascript">
+        angular.module('notesApp', [])
+                .controller('MainCtrl', [function () {
+                    var self = this;
+                    self.notas = [
+                        {id: 1, titulo: 'Primeira Nota', done: true, sessao: 'Shyam'},
+                        {id: 2, titulo: 'Segunda Nota', done: false},
+                        {id: 3, titulo: 'Terceira Nota', done: false},
+                        {id: 4, titulo: 'Quarta Nota', done: false, sessao: 'Brad'}
+                    ];
+
+                    self.getNoteClass = function (status) {
+                        return{
+                            done: status,
+                            pending: !status
+                        };
+                    }
+                }])
+    </script>
+</body>
+</html>

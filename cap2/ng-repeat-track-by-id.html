@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="notesApp">
+<head>
+    <meta charset="UTF-8">
+    <title>NotesApp</title>
+</head>
+<body ng-controller="MainCtrl as ctrl">
+    <button ng-click="ctrl.changeNotes()">Change Notes</button>
+    <div ng-repeat="note in ctrl.notes1">
+        {{note.$$hashKey}}
+        <span class="label">{{note.label}}</span>
+        <span class="author" ng-bind="note.done"></span>
+    </div>
+    <div ng-repeat="note in ctrl.notes2 track by note.id">
+        {{note.$$hashKey}}
+        <span class="label">{{note.label}}</span>
+        <span class="author" ng-bind="note.done"></span>
+    </div>
+<script src="angular/angular.min.js"></script>
+<script type="text/javascript">
+    angular.module('notesApp', [])
+            .controller('MainCtrl', [function () {
+                var self = this;
+                var notes = [
+                    {id: 1, label: 'First Note', done: false, someRandom: 31431},
+                    {id: 2, label: 'Second Note', done: false},
+                    {id: 3, label: 'Finished Third Note', done: true}
+                ];
+                self.notes1 = angular.copy(notes);
+                self.notes2 = angular.copy(notes);
+                self.changeNotes = function () {
+                    notes = [
+                        {id: 1, label: 'Changed Note', done: false, someRandom: 4242},
+                        {id: 2, label: 'Second Note', done: false},
+                        {id: 3, label: 'Finished Third Note', done: true}
+                    ];
+                    self.notes1 = angular.copy(notes);
+                    self.notes2 = angular.copy(notes);c
+                };
+
+            }]);
+</script>
+</body>
+</html>

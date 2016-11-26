@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="notesApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body ng-controller="MainCtrl as ctrl">
+    {{ctrl.msgOla}} Angular JS.
+    <br/>
+
+    <!--    Não irá funcionar, pois para o html conseguir acessar um objeto do controllador, ele tem de ser declarado com a expressão 'this' na frente do nome do objeto,
+            váriaveis declaradas com a expressão 'var' antes do nome, só são acessível dentro do própria controlador, ou seja, o html não tem acesso.
+    -->
+    {{ctrl.msgTchau}} Angular JS.
+    <script src="angular/angular.min.js"></script>
+    <script type="text/javascript">
+        angular.module('notesApp', []).controller('MainCtrl', [function () {
+            this.msgOla = 'Olá';
+            var msgTchau = 'Tchau';
+        }])
+    </script>
+</body>
+</html>
