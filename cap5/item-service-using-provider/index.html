@@ -1,37 +1,44 @@
-<html ng-app="notesApp">
+<!DOCTYPE html>
+<html lang="en" ng-app="notesApp">
 <head>
-    <title>Notes App</title>
-
-    <script src="angular/angular.min.js"></script>
-    <script src="app.js"></script>
+    <meta charset="UTF-8">
+    <title>NotesApp</title>
 </head>
 <body ng-controller="MainCtrl as mainCtrl">
-    <h1>Hello Controllers!<h1>
+    <h1>Hello Controllers!</h1>
     <button ng-click="mainCtrl.open('first')">Open First</button>
-    <button ng-click="mainCtrl.open('second')">Second</button>
+    <button ng-click="mainCtrl.open('second')">Open Second</button>
     <div ng-switch on="mainCtrl.tab">
         <div ng-switch-when="first">
             <div ng-controller="SubCtrl as ctrl">
                 <h3>First tab</h3>
                 <ul>
-                    <li ng-repeat="item in ctrl.list">
+                    <li ng-repeat="item in ctrl.list()">
                         <span ng-bind="item.label"></span>
                     </li>
                 </ul>
-                <button ng-click="ctrl.add()">Add More Items</button>
+                <button ng-click="ctrl.add()">
+                    Add More Items
+                </button>
             </div>
         </div>
         <div ng-switch-when="second">
             <div ng-controller="SubCtrl as ctrl">
-                <h3>Second</h3>
+                <h3>Second tab</h3>
                 <ul>
-                    <li ng-repeat="item in ctrl.list">
+                    <li ng-repeat="item in ctrl.list()">
                         <span ng-bind="item.label"></span>
                     </li>
                 </ul>
-                <button ng-click="ctrl.add()">Add More Items</button>
+
+                <button ng-click="ctrl.add()">
+                    Add More Items
+                </button>
             </div>
         </div>
     </div>
+
+    <script src="../../angular/angular.min.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
