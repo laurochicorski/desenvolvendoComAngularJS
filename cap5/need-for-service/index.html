@@ -1,0 +1,15 @@
+<html ng-app="notesApp">
+<head>
+    <title>Notes App</title>
+</head>
+<body ng-controller="MainCtrl as mainCtrl">
+    <h1>Hello Controllers!<h1>
+    <button ng-click="mainCtrl.open('first')">Open First</button>
+    <button ng-click="mainCtrl.open('second')">Second</button>
+    <div ng-switch-when="first">
+
+    </div>
+
+    <script src="angular/angular.min.js"></script>
+</body>
+</html>
